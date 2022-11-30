@@ -23,7 +23,7 @@ app.post("/students", async(req, res) => {
 // get all students
 app.get("/students", async(req, res) => {
     try {
-        const allStudents = await pool.query("SELECT * FROM student");
+        const allStudents = await pool.query("SELECT * FROM student ORDER BY studentid");
         res.json(allStudents.rows);
     } catch (err) {
         console.error(err.message);

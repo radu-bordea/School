@@ -2,16 +2,14 @@ import React, {Fragment} from 'react';
 import './App.css';
 
 // components
+import StudentsPage from './components/students/StudentsPage'
 
-import InputStudent from './components/InputStudent';
-import ListStudents from './components/ListStudent';
 
 function App() {
   return (
     <Fragment>
       <div className="container">
-        <InputStudent />
-        <ListStudents />
+        <StudentsPage />
       </div>
     </Fragment>
   )

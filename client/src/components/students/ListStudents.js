@@ -1,5 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react'
 
+import EditStudent from './EditStudent';
+
 const ListStudents = () => {
 
     const [students, setStudents] = useState([]);
@@ -38,6 +40,7 @@ const ListStudents = () => {
         <table className="table mt-5 text-center">
           <thead>
             <tr>
+              <th>Student Id</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Date Of Birth</th>
@@ -46,21 +49,30 @@ const ListStudents = () => {
             </tr>
           </thead>
           <tbody>
-{/*             <tr>
+            {/*             <tr>
               <td>John</td>
               <td>Doe</td>
               <td>john@example.com</td>
             </tr> */}
-            {students.map(student => (
-                <tr key={student.studentid}>
-                    <td>{student.firstname}</td>
-                    <td>{student.lastname}</td>
-                    <td>{student.dateofbirth}</td>
-                    <td>Edit</td>
-                    <td><button className='btn btn-danger' onClick={() => deleteStudent(student.studentid)}>Delete</button></td>
-                </tr>
+            {students.map((student) => (
+              <tr key={student.studentid}>
+                <td>{student.studentid}</td>
+                <td>{student.firstname}</td>
+                <td>{student.lastname}</td>
+                <td>{student.dateofbirth.slice(0, 10)}</td>
+                <td>
+                  <EditStudent student={student} />
+                </td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteStudent(student.studentid)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
             ))}
-
           </tbody>
         </table>
       </Fragment>
