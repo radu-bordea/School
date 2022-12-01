@@ -1,0 +1,50 @@
+.footer{
+    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    left: 0%;
+    top: +55%;
+    position: fixed;
+    color: white;
+}
+
+.footer > li{
+    list-style-type: none;
+    color: wheat;
+}
+
+.footer > li > a{
+    padding: 1rem 0.5rem;
+    padding-right: 8px;
+    background-color: black;
+    color: wheat;
+    text-decoration: none;
+    opacity: 70%;
+    display: flex;
+    justify-content: space-between;
+    width: 140px;
+    margin-left: -130px;
+    transition: .2s;
+}
+
+.footer > li > a:hover{
+    margin-left: -30px;
+    border-radius: 5px;
+}
+
+.footer > li > a > span{
+    margin-top: -5px;
+}
+
+@media screen and (max-width: 850px) {
+
+}
+
+@media screen and (max-width: 550px) {
+
+}
+
+@media screen and (max-width: 400px) {
+
+}
