@@ -16,7 +16,7 @@ const EditStudent = ({student}) => {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             })
-            window.location = "/";
+            window.location = "/students";
         } catch (err) {
             console.error(err.message);
         }
@@ -33,7 +33,7 @@ const EditStudent = ({student}) => {
           Edit
         </button>
 
-        <div className="modal" id={`id${student.studentid}`}>
+        <div className="modal text-dark" id={`id${student.studentid}`}>
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">

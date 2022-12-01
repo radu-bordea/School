@@ -16,7 +16,7 @@ const InputStudent = () => {
                 body: JSON.stringify(body)
             });
 
-            window.location = "/";
+            window.location = "/students";
         } catch (err) {
             console.error(err.message);
         }
