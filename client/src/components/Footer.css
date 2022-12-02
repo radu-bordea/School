@@ -28,6 +28,14 @@
     transition: .2s;
 }
 
+.footer > .facebook > a {
+    border-top-right-radius: 0.5rem;
+}
+
+.footer > .gmail > a {
+    border-bottom-right-radius: 0.5rem;
+}
+
 .footer > li > a:hover{
     margin-left: -30px;
     border-radius: 5px;

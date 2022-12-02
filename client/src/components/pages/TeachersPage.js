@@ -1,8 +1,14 @@
 import React, { Fragment } from "react";
+import InputTeacher from "../teachers/InputTeacher";
+import ListTeachers from "../teachers/ListTeachers";
+
 
 const TeachersPage = () => {
     return (
-        <h1>Teachers</h1>
+        <Fragment>
+            <InputTeacher />
+            <ListTeachers />
+        </Fragment>
     );
 };
 

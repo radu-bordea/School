@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import InputStudent from "../students/InputStudent";
 import ListStudents from "../students/ListStudents";
 

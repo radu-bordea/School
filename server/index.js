@@ -20,11 +20,32 @@ app.post("/students", async(req, res) => {
     }
 })
 
+// create a teacher
+app.post("/teachers", async(req, res) => {
+    try {
+        const {firstname, lastname, title} = req.body;
+        const newTeacher = await pool.query("INSERT INTO teacher (firstname, lastname, title) values ($1, $2, $3) RETURNING *", [firstname, lastname, title]);
+        res.json(newTeacher.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 // get all students
 app.get("/students", async(req, res) => {
     try {
         const allStudents = await pool.query("SELECT * FROM student ORDER BY studentid");
         res.json(allStudents.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+// get all teachers
+app.get("/teachers", async(req, res) => {
+    try {
+        const allTeachers = await pool.query("SELECT * FROM teacher ORDER BY teacherid");
+        res.json(allTeachers.rows);
     } catch (err) {
         console.error(err.message);
     }
@@ -41,6 +62,17 @@ app.get("/students/:id", async (req, res) => {
     }
 })
 
+// get a teacher
+app.get("/teachers/:id", async(req, res) => {
+    try {
+        const {id} = req.params;
+        const teacher = await pool.query("SELECT * FROM teacher WHETE teacherid = $1", [id]);
+        res.json(teacher.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 // update a student 
 app.put("/students/:id", async (req, res) => {
   try {
@@ -50,12 +82,26 @@ app.put("/students/:id", async (req, res) => {
       "UPDATE student SET firstname = $1, lastname = $2, dateofbirth = $3 WHERE studentid = $4",
       [firstname, lastname, dateofbirth, id]
     );
-
     res.json("Student was updated!");
   } catch (err) {
     console.error(err.message);
   }
 });
+
+// update a teacher
+app.put("/teachers/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { firstname, lastname, title } = req.body;
+        const updateTeacher = await pool.query(
+            "UPDATE teacher SET firstname = $1, lastname = $2, title = $3 WHERE teacherid = $4", 
+        [firstname, lastname, title, id]
+        );
+        res.json("Teacher was updated!");
+    } catch (err) {
+        console.error(err.message);
+    }
+})
 
 // delete a student
 app.delete("/students/:id", async(req, res) => {
@@ -63,6 +109,17 @@ app.delete("/students/:id", async(req, res) => {
         const {id} = req.params;
         const deleteStudent = await pool.query("DELETE FROM student WHERE studentid = $1", [id]);
         res.json("Student was deleted");
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+// delete a teacher
+app.delete("/teachers/:id", async(req, res) => {
+    try {
+        const {id} = req.params;
+        const deleteTeacher = await pool.query("DELETE FROM teacher WHERE teacherid = $1", [id]);
+        res.json("Teacher was deleted");
     } catch (err) {
         console.error(err.message);
     }

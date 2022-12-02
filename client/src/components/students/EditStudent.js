@@ -6,7 +6,7 @@ const EditStudent = ({student}) => {
     const [lastname, setLastname] = useState(student.lastname);
     const [dateofbirth, setDateofbirth] = useState(student.dateofbirth.slice(0, 10));
 
-    // edit description function
+    // edit updateStudent function
     const updateStudent = async(e) => {
         e.preventDefault();
         try {

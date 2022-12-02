@@ -7,7 +7,6 @@ const ListStudents = () => {
     const [students, setStudents] = useState([]);
 
     // delete student function
-
     const deleteStudent = async id => {
         try {
             const deleteStudent = await fetch(`http://localhost:5000/students/${id}`,{
@@ -19,6 +18,7 @@ const ListStudents = () => {
         }
     }
 
+    // get students
     const getStudents = async() => {
         try {
             
@@ -49,11 +49,6 @@ const ListStudents = () => {
             </tr>
           </thead>
           <tbody>
-            {/*             <tr>
-              <td>John</td>
-              <td>Doe</td>
-              <td>john@example.com</td>
-            </tr> */}
             {students.map((student) => (
               <tr key={student.studentid}>
                 <td>{student.studentid}</td>
