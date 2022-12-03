@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import InputSubject from '../subjects/InputSubject';
+import ListSubjects from '../subjects/ListSubjects';
 
 const SubjectsPage = () => {
     return (
-        <h1>Subjects</h1>
+        <Fragment>
+            <InputSubject/>
+            <ListSubjects/>
+        </Fragment>
     );
 };
 

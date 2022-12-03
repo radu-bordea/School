@@ -31,6 +31,17 @@ app.post("/teachers", async(req, res) => {
     }
 })
 
+// create a subject
+app.post("/subjects", async(req, res) => {
+    try {
+        const {subjectname, studentid, teacherid} = req.body;
+        const newSubject = await pool.query("INSERT INTO subject (subjectname, studentid, teacherid) values ($1, $2, $3) RETURNING *", [subjectname, studentid, teacherid]);
+        res.json(newSubject.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 // get all students
 app.get("/students", async(req, res) => {
     try {
@@ -51,6 +62,16 @@ app.get("/teachers", async(req, res) => {
     }
 })
 
+// get all subjects
+app.get("/subjects", async(req, res) => {
+    try {
+        const allSubjects = await pool.query("SELECT * FROM subject ORDER BY subjectid");
+        res.json(allSubjects.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 // get a student
 app.get("/students/:id", async (req, res) => {
     try {
@@ -66,8 +87,18 @@ app.get("/students/:id", async (req, res) => {
 app.get("/teachers/:id", async(req, res) => {
     try {
         const {id} = req.params;
-        const teacher = await pool.query("SELECT * FROM teacher WHETE teacherid = $1", [id]);
+        const teacher = await pool.query("SELECT * FROM teacher WHERE teacherid = $1", [id]);
         res.json(teacher.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+// get a subject
+app.get("/subjects/:id", async(req, res) => {
+    try {
+        const {id} = req.params;
+        const subject = await pool.query("SELECT * FROM subject WHERE subjectid = $1", [id]);
+        res.json(subject.rows[0]);
     } catch (err) {
         console.error(err.message);
     }
@@ -102,6 +133,20 @@ app.put("/teachers/:id", async (req, res) => {
         console.error(err.message);
     }
 })
+// update a subject
+app.put("/subjects/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { subjectname, studentid, teacherid } = req.body;
+        const updateSubject = await pool.query(
+            "UPDATE subject SET subjectname = $1, studentid = $2, teacherid = $3 WHERE subjectid = $4", 
+        [subjectname, studentid, teacherid, id]
+        );
+        res.json("Subject was updated!");
+    } catch (err) {
+        console.error(err.message);
+    }
+})
 
 // delete a student
 app.delete("/students/:id", async(req, res) => {
@@ -120,6 +165,16 @@ app.delete("/teachers/:id", async(req, res) => {
         const {id} = req.params;
         const deleteTeacher = await pool.query("DELETE FROM teacher WHERE teacherid = $1", [id]);
         res.json("Teacher was deleted");
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+// delete a subject
+app.delete("/subjects/:id", async(req, res) => {
+    try {
+        const {id} = req.params;
+        const deleteSubject = await pool.query("DELETE FROM subject WHERE subjectid = $1", [id]);
+        res.json("Subject was deleted");
     } catch (err) {
         console.error(err.message);
     }
