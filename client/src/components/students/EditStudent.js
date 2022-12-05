@@ -44,25 +44,28 @@ const EditStudent = ({student}) => {
               </div>
 
               <div className="modal-body">
-                <label>Student ID: {student.studentid}</label>
+                <h4>Student ID: {student.studentid}</h4><br />
+                <span>First Name</span>
                 <input
                   type="text"
                   className="form-control mt-2"
                   value={firstname}
                   onChange={(e) => setFirstname(e.target.value)}
-                />
+                  />
+                <span>Last Name</span>
                 <input
                   type="text"
                   className="form-control mt-2"
                   value={lastname}
                   onChange={(e) => setLastname(e.target.value)}
-                />
+                  />
+                <span>Date Of Birth</span>
                 <input
                   type="text"
                   className="form-control mt-2"
                   value={dateofbirth}
                   onChange={(e) => setDateofbirth(e.target.value)}
-                />
+                  />
               </div>
 
               <div className="modal-footer">

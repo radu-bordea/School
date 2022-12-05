@@ -43,6 +43,8 @@ const ListSubjects = () => {
               <th>Subject Id</th>
               <th>Subject Name</th>
               <th>Teacher id</th>
+              <th>Teacher First Name</th>
+              <th>Teacher Last Name</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -53,6 +55,8 @@ const ListSubjects = () => {
                 <td>{subject.subjectid}</td>
                 <td>{subject.subjectname}</td>
                 <td>{subject.teacherid}</td>
+                <td>{subject.firstname}</td>
+                <td>{subject.lastname}</td>
                 <td>
                   <EditSubject subject={subject} />
                 </td>

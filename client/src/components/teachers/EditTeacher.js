@@ -46,19 +46,22 @@ const EditTeacher = ({teacher}) => {
             </div>
 
             <div className="modal-body">
-              <label>Teacher ID: {teacher.teacherid}</label>
+              <h4>Teacher ID: {teacher.teacherid}</h4><br />
+              <span>First Name</span>
               <input
                 type="text"
                 className="form-control mt-2"
                 value={firstname}
                 onChange={(e) => setFirstname(e.target.value)}
-              />
+                />
+              <span>Last Name</span>
               <input
                 type="text"
                 className="form-control mt-2"
                 value={lastname}
                 onChange={(e) => setLastname(e.target.value)}
-              />
+                />
+              <span>Title</span>
               <input
                 type="text"
                 className="form-control mt-2"

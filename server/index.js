@@ -42,6 +42,17 @@ app.post("/subjects", async(req, res) => {
     }
 })
 
+// create a participation
+app.post("/participations", async(req, res) => {
+    try {
+        const {subjectid, studentid} = req.body;
+        const newParticipation = await pool.query("INSERT INTO participation (subjectid, studentid) values ($1, $2) RETURNING *", [subjectid, studentid]);
+        res.json(newParticipation.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 // get all students
 app.get("/students", async(req, res) => {
     try {
@@ -65,12 +76,27 @@ app.get("/teachers", async(req, res) => {
 // get all subjects
 app.get("/subjects", async(req, res) => {
     try {
-        const allSubjects = await pool.query("SELECT * FROM subject ORDER BY subjectid");
+        const allSubjects = await pool.query(
+          "SELECT s.subjectid, s.subjectname, t.teacherid, t.firstname, t.lastname from teacher as t INNER JOIN subject as s on t.teacherid = s.teacherid ORDER BY subjectid;"
+        );
         res.json(allSubjects.rows);
     } catch (err) {
         console.error(err.message);
     }
 })
+
+// get all participations
+app.get("/participations", async(req, res) => {
+    try {
+        const allParticipations = await pool.query(
+          "SELECT p.subjectid, sb.subjectname, p.studentid, st.firstname, st.lastname from subject as sb INNER JOIN participation as p on sb.subjectid = p.subjectid inner join student st on st.studentid = p.studentid ORDER BY p.subjectid;"
+        );
+        res.json(allParticipations.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 
 // get a student
 app.get("/students/:id", async (req, res) => {
@@ -175,6 +201,17 @@ app.delete("/subjects/:id", async(req, res) => {
         const {id} = req.params;
         const deleteSubject = await pool.query("DELETE FROM subject WHERE subjectid = $1", [id]);
         res.json("Subject was deleted");
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+// delete a participation
+app.delete("/participations/:id", async(req, res) => {
+    try {
+        const {id} = req.params;
+        const deleteParticipation = await pool.query("DELETE FROM participation WHERE subjectid = $1", [id]);
+        res.json("Participation was deleted");
     } catch (err) {
         console.error(err.message);
     }

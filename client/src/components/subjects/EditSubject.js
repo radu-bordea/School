@@ -45,14 +45,15 @@ const EditSubject = ({ subject }) => {
             </div>
 
             <div className="modal-body">
-              <label>Subject ID: {subject.subjectid}</label>
+              <h4>Subject ID: {subject.subjectid}</h4><br />
+              <span>Name</span>
               <input
                 type="text"
                 className="form-control mt-2"
                 value={subjectname}
                 onChange={(e) => setSubjectname(e.target.value)}
               />
-
+              <span>Teacher id</span>
               <input
                 type="text"
                 className="form-control mt-2"
