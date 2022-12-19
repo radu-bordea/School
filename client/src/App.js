@@ -18,7 +18,7 @@ function App() {
 
   return (
     <Fragment>
-      {!logged && (
+      {/* {!logged && (
         <form className="form" action="">
           <h1>Login to the system</h1>
           <div>
@@ -39,8 +39,8 @@ function App() {
           </div>
         </form>
       )}
-
-      {logged && (
+ */}
+      {(
         <div>
           <Router>
             <Navbar />
