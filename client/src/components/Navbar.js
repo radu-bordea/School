@@ -1,6 +1,7 @@
 import React from 'react';
 import School from "../school.png";
 import { Link } from "react-router-dom";
+import LogoutButton from './auth0/logoutButton';
 
 const Navbar = () => {
     return (
@@ -42,9 +43,15 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link className="navbar-brand nav-link mb-0 h1" to="/participations">
+              <Link
+                className="navbar-brand nav-link mb-0 h1"
+                to="/participations"
+              >
                 Participations
               </Link>
+            </li>
+            <li className="nav-item active img-fluid">
+              <LogoutButton />
             </li>
           </ul>
         </div>

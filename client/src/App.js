@@ -1,63 +1,29 @@
-import React, { Fragment, useState } from "react";
-import { FaRegMoon, FaRegSun } from "react-icons/fa";
+import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./App.css";
-import Navbar from './components/Navbar';
 
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
-// components
-import StudentsPage from "./components/pages/StudentsPage";
-import HomePage from "./components/pages/HomePage";
-import TeachersPage from "./components/pages/TeachersPage";
-import SubjectsPage from "./components/pages/SubjectsPage";
-import ParticipationsPage from "./components/pages/ParticipationsPage";
-import Footer from "./components/Footer";
+import LoginButton from "./components/auth0/loginButton";
+
+import UserProfile from "./components/auth0/userProfile";
 
 function App() {
 
-  const [logged, setLogged] = useState(false);
+  const {isAuthenticated } = useAuth0();
 
-  return (
-    <Fragment>
-      {/* {!logged && (
-        <form className="form" action="">
-          <h1>Login to the system</h1>
-          <div>
-            <div>
-              <label htmlFor="username">Username</label>
-              <input type="login" id="login" />
-            </div>
-            <div>
-              <label htmlFor="Email">Email</label>
-              <input type="register" id="login" />
-            </div>
-          </div>
-          <hr />
-          <br />
-          <div>
-            <button onClick={()=>{setLogged(!logged)}} className="btn btn-info">Login</button>
-            <button className="btn btn-succes">Register</button>
-          </div>
-        </form>
-      )}
- */}
-      {(
-        <div>
-          <Router>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/students" element={<StudentsPage />} />
-              <Route path="/teachers" element={<TeachersPage />} />
-              <Route path="/subjects" element={<SubjectsPage />} />
-              <Route path="/subjects" element={<SubjectsPage />} />
-              <Route path="/participations" element={<ParticipationsPage />} />
-            </Routes>
-            <Footer className="footer" />
-          </Router>
+  if (!isAuthenticated) {
+      return (
+        <div className="text-center mt-5">
+          <h1 className="text-info">Welcome to Coding School</h1><hr/>
+          <h3 className="text-secondary">Authenticate with Auth0</h3>
+          <LoginButton />
         </div>
-      )}
-    </Fragment>
-  );
+      );  
+  }    
+  return (
+    <div className="App">
+      <UserProfile/>
+    </div>
+  )
 }
 
 export default App;

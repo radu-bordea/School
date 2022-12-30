@@ -30,6 +30,10 @@ button {
   margin: auto;
 }
 
+.btnLogout{
+  margin-left: 50%;
+}
+
 @media screen and (max-width: 900px) {
   .form {
     margin: 10% 5%;
@@ -54,6 +58,7 @@ button {
     margin-top: 10px;
     width: 80px;
   }
+
 }
 
 @media screen and (max-width: 550px) {
