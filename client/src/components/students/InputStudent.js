@@ -7,7 +7,6 @@ const InputStudent = () => {
     const [dateofbirth, setDateofbirth] = useState("");
 
     const onSubmitForm = async e => {
-        e.preventDefault();
         try {
             const body = {firstname, lastname, dateofbirth};
             const response = await fetch("http://localhost:5000/students", {

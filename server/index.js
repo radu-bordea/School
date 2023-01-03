@@ -34,8 +34,8 @@ app.post("/teachers", async(req, res) => {
 // create a subject
 app.post("/subjects", async(req, res) => {
     try {
-        const {subjectname, studentid, teacherid} = req.body;
-        const newSubject = await pool.query("INSERT INTO subject (subjectname, studentid, teacherid) values ($1, $2, $3) RETURNING *", [subjectname, studentid, teacherid]);
+        const {subjectname, teacherid} = req.body;
+        const newSubject = await pool.query("INSERT INTO subject (subjectname, teacherid) values ($1, $2) RETURNING *", [subjectname, teacherid]);
         res.json(newSubject.rows[0]);
     } catch (err) {
         console.error(err.message);
@@ -163,10 +163,10 @@ app.put("/teachers/:id", async (req, res) => {
 app.put("/subjects/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const { subjectname, studentid, teacherid } = req.body;
+        const { subjectname, teacherid } = req.body;
         const updateSubject = await pool.query(
-            "UPDATE subject SET subjectname = $1, studentid = $2, teacherid = $3 WHERE subjectid = $4", 
-        [subjectname, studentid, teacherid, id]
+            "UPDATE subject SET subjectname = $1, teacherid = $2 WHERE subjectid = $3", 
+        [subjectname, teacherid, id]
         );
         res.json("Subject was updated!");
     } catch (err) {
