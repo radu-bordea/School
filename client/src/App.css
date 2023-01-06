@@ -2,6 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0 0 0 0.5rem;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 .form {
@@ -86,4 +87,31 @@ button {
     margin-top: 10px;
     width: 80px;
   }
+}
+
+.subjectsTable1 {
+  position: fixed;
+  width: 350px;
+  height: 400px;
+  overflow: scroll;
+}
+.containerT {
+  background: black;
+  opacity: 60%;
+  position: fixed;
+  padding-left: 3rem;
+  width: 650px;
+  height: 400px;
+  overflow: scroll;
+}
+
+
+.btnTry:focus{
+  background: black !important;
+  opacity: 70%;
+  color: wheat;
+}
+
+.studentsLine{
+  border-bottom: 1px solid wheat;
 }

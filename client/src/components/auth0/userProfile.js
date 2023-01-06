@@ -34,7 +34,6 @@ const UserProfile = () => {
                 <Route path="/students" element={<StudentsPage />} />
                 <Route path="/teachers" element={<TeachersPage />} />
                 <Route path="/subjects" element={<SubjectsPage />} />
-                <Route path="/subjects" element={<SubjectsPage />} />
                 <Route
                   path="/participations"
                   element={<ParticipationsPage />}

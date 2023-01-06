@@ -1,12 +1,28 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import "../../App.css";
 
 // import EditParticipation from "./EditParticipations";
 
-const ListParticipations = () => {
+const ListParticipations = ({ subjectId }) => {
   const [participations, setParticipations] = useState([]);
+  let value = 0;
 
-//  delete student function
-    const deleteParticipation = async (id) => {
+  const getParticipations = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/participations`);
+      const jsonData = await response.json();
+
+      for (const iterator of jsonData) {
+        console.log(iterator.subjectid);
+      }
+
+      setParticipations(jsonData);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  const deleteParticipation = async (id) => {
     try {
       const deleteParticipation = await fetch(
         `http://localhost:5000/participations/${id}`,
@@ -14,19 +30,7 @@ const ListParticipations = () => {
           method: "DELETE",
         }
       );
-      setParticipations(participations.filter((p) => p.subjectid !== id));
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  // get students
-  const getParticipations = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/participations");
-      const jsonData = await response.json();
-
-      setParticipations(jsonData);
+      setParticipations(participations.filter((p) => p.studentid !== id));
     } catch (err) {
       console.error(err.message);
     }
@@ -37,39 +41,27 @@ const ListParticipations = () => {
   }, []);
 
   return (
-    <Fragment>
-      <table className="table mt-5 text-center">
-        <thead>
-          <tr>
-            <th>Subject Id</th>
-            <th>Subject Name</th>
-            <th>Student id</th>
-            <th>Student First Name</th>
-            <th>Student Last Name</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {participations.map((p) => (
-            <tr key={p.subjectid}>
-              <td>{p.subjectid}</td>
-              <td>{p.subjectname}</td>
-              <td>{p.studentid}</td>
-              <td>{p.firstname}</td>
-              <td>{p.lastname}</td>
-              <td>
+    <div className="containerT">
+      {participations.map((p) => (
+        <div key={value++}>
+          {p.subjectid == subjectId && (
+            <div className="row p-2 mt-1 mr-3 text-light studentsLine">
+              <span className="col-8">
+                {p.studentid} | {p.firstname} {p.lastname}
+              </span>
+              <span className="col-3">
                 <button
                   className="btn btn-danger"
-                  onClick={() => deleteParticipation(p.subjectid)}
+                  onClick={() => deleteParticipation(p.studentid)}
                 >
                   Delete
                 </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </Fragment>
+              </span>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
   );
 };
 

@@ -6,25 +6,25 @@ import { TfiEmail } from "react-icons/tfi";
 const Footer = () => (
   <ul className="footer">
     <li className="facebook">
-      <a href="https://www.facebook.com/">
+      <a href="https://www.facebook.com/" target="_blank">
         <span>Facebook</span>
         <FaFacebook />
       </a>
     </li>
     <li className="github">
-      <a href="https://github.com/">
+      <a href="https://github.com/" target="_blank">
         <span>Github</span>
         <FaGithub />
       </a>
     </li>
     <li className="linkedin">
-      <a href="https://fi.linkedin.com/">
+      <a href="https://fi.linkedin.com/" target="_blank">
         <span>Linkedin</span>
         <FaLinkedin />
       </a>
     </li>
     <li className="gmail">
-      <a href="https://www.gmail.com">
+      <a href="https://www.gmail.com" target="_blank">
         <span>Gmail</span>
         <TfiEmail />
       </a>

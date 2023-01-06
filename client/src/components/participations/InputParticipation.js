@@ -22,8 +22,8 @@ const InputParticipation = () => {
 
   return (
     <Fragment>
-      <h1 className="text-center mt-5">Participations List</h1>
-      <form className="d-flex mt-5" onSubmit={onSubmitForm}>
+      <h3 className="text-center mt-3">Register below</h3>
+      <form className="d-flex mt-3" onSubmit={onSubmitForm}>
         <input
           type="text"
           placeholder="subject id"

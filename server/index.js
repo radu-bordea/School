@@ -86,6 +86,16 @@ app.get("/subjects", async(req, res) => {
 })
 
 // get all participations
+/* app.get("/participations", async(req, res) => {
+    try {
+        const allParticipations = await pool.query(
+          "SELECT p.subjectid, sb.subjectname, p.studentid, st.firstname, st.lastname from subject as sb INNER JOIN participation as p on sb.subjectid = p.subjectid inner join student st on st.studentid = p.studentid ORDER BY p.subjectid;"
+        );
+        res.json(allParticipations.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+}) */
 app.get("/participations", async(req, res) => {
     try {
         const allParticipations = await pool.query(
@@ -210,7 +220,7 @@ app.delete("/subjects/:id", async(req, res) => {
 app.delete("/participations/:id", async(req, res) => {
     try {
         const {id} = req.params;
-        const deleteParticipation = await pool.query("DELETE FROM participation WHERE subjectid = $1", [id]);
+        const deleteParticipation = await pool.query("DELETE FROM participation WHERE studentid = $1", [id]);
         res.json("Participation was deleted");
     } catch (err) {
         console.error(err.message);

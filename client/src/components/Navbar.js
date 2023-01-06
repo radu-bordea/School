@@ -47,7 +47,7 @@ const Navbar = () => {
                 className="navbar-brand nav-link mb-0 h1"
                 to="/participations"
               >
-                Participations
+                Course Registration
               </Link>
             </li>
             <li className="nav-item active img-fluid">
