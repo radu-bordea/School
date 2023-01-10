@@ -1,5 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 
+// Logout component which shows a Logout button in the Navbar
 const LogoutButton = () => {
   const { logout } = useAuth0();
 

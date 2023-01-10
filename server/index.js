@@ -86,16 +86,6 @@ app.get("/subjects", async(req, res) => {
 })
 
 // get all participations
-/* app.get("/participations", async(req, res) => {
-    try {
-        const allParticipations = await pool.query(
-          "SELECT p.subjectid, sb.subjectname, p.studentid, st.firstname, st.lastname from subject as sb INNER JOIN participation as p on sb.subjectid = p.subjectid inner join student st on st.studentid = p.studentid ORDER BY p.subjectid;"
-        );
-        res.json(allParticipations.rows);
-    } catch (err) {
-        console.error(err.message);
-    }
-}) */
 app.get("/participations", async(req, res) => {
     try {
         const allParticipations = await pool.query(
@@ -227,6 +217,7 @@ app.delete("/participations/:id", async(req, res) => {
     }
 })
 
+// create server
 app.listen(5000, () => {
     console.log("server has started at port 5000");
 })

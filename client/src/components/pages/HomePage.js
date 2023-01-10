@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 
+// This is the home page whhich shows after the login is approved and is part of the Navbar
 const HomePage = () => {
     return (
         <Fragment>

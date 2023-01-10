@@ -4,6 +4,7 @@ const InputSubject = () => {
   const [subjectname, setSubjectname] = useState("");
   const [teacherid, setTeacherid] = useState("");
 
+  // Register a new Subject
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {

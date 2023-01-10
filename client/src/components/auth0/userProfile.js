@@ -20,11 +20,13 @@ const UserProfile = () => {
   if (isLoading) {
     return <div>Loading!</div>;
   }
-
+ 
+  /* After the login the app shows on the web
+  The React Routes are aded on this level*/
   return (
     isAuthenticated && (
       <div>
-
+        
         <Fragment>
           <div>
             <Router>

@@ -1,8 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "../../App.css";
 
-// import EditParticipation from "./EditParticipations";
-
 const ListParticipations = ({ subjectId }) => {
   const [participations, setParticipations] = useState([]);
   let value = 0;

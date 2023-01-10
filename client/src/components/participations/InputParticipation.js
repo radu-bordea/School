@@ -4,6 +4,7 @@ const InputParticipation = () => {
   const [subjectid, setSubjectid] = useState("");
   const [studentid, setStudentid] = useState("");
 
+  /*This is the Participation component for register a new student to a course */
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {

@@ -3,6 +3,7 @@ import School from "../school.png";
 import { Link } from "react-router-dom";
 import LogoutButton from './auth0/logoutButton';
 
+// Navbar Component
 const Navbar = () => {
     return (
       <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-info">
