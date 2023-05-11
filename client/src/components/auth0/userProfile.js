@@ -26,7 +26,6 @@ const UserProfile = () => {
   return (
     isAuthenticated && (
       <div>
-        
         <Fragment>
           <div>
             <Router>
